@@ -29,7 +29,7 @@ const Login = () => {
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Login</button>
-                        <NavLink to="/login" className="label-text-alt link link-hover text-center">New to Ema-Jhon?<span className="text-warning font-bold">Create New Account</span>
+                        <NavLink to="/signup" className="label-text-alt link link-hover text-center">New to Ema-Jhon?<span className="text-warning font-bold">Create New Account</span>
                         </NavLink>
                         <div className="divider">OR</div>
                         <button className="btn btn-outline btn-primary">Continue with Google</button>
