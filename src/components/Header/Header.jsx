@@ -8,7 +8,7 @@ const Header = () => {
         <div className="navbar bg-primary text-primary-content d-flex justify-between">
             <img src={logo} alt="" />
             <div>
-                <NavLink to="/" className="btn btn-ghost normal-case text-xl text-white">Shope</NavLink>
+                <NavLink to="/" className= {({ isActive}) => isActive ? "active btn btn-ghost normal-case text-xl text-white" : "undefined btn btn-ghost normal-case text-xl text-white" }>Shope</NavLink>
                 <NavLink to="/orders" className="btn btn-ghost normal-case text-xl text-white">Orders</NavLink>
                 <NavLink to="/inventory" className="btn btn-ghost normal-case text-xl text-white">Inventory</NavLink>
                 <NavLink to="/login" className="btn btn-ghost normal-case text-xl text-white">Login</NavLink>
@@ -19,3 +19,4 @@ const Header = () => {
 };
 
 export default Header;
+// className=
