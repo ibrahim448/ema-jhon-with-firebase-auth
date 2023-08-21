@@ -1,19 +1,19 @@
 import React from 'react';
 import './Header.css';
 import logo from '../../images/Logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <nav className='header'>
+        <div className="navbar bg-primary text-primary-content d-flex justify-between">
             <img src={logo} alt="" />
             <div>
-                <Link to="/">Shop</Link>
-                <Link to="/orders">Orders</Link>
-                <Link to="/inventory">Inventory</Link>
-                <Link to="/login">Login</Link>
+                <NavLink to="/" className="btn btn-ghost normal-case text-xl text-white">Shope</NavLink>
+                <NavLink to="/orders" className="btn btn-ghost normal-case text-xl text-white">Orders</NavLink>
+                <NavLink to="/inventory" className="btn btn-ghost normal-case text-xl text-white">Inventory</NavLink>
+                <NavLink to="/login" className="btn btn-ghost normal-case text-xl text-white">Login</NavLink>
             </div>
-        </nav>
+        </div>
     );
 };
 
