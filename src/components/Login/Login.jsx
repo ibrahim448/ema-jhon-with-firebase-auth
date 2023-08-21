@@ -1,7 +1,16 @@
-import React from 'react';
+import { faEye, faEyeSlash, faL } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Login = () => {
+
+  const [passShow, setPassShow] = useState(false);
+
+
+  const passwordToggle =()=>{
+    setPassShow(!passShow);
+  }
   
   return (
        
@@ -18,11 +27,19 @@ const Login = () => {
                         </label>
                         <input type="text" placeholder="email" className="input input-bordered" />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control password-icon2">
                         <label className="label">
                           <span className="label-text">Password</span>
                         </label>
-                          <input type="text" placeholder="password" className="input input-bordered" />
+                          <input type={passShow ? "text" : "password"} name='password' placeholder="password" className="input input-bordered"  required />
+                          {
+                            !passShow ? <span onClick={passwordToggle} className='icon2'>
+                            <FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon>
+                            </span>:
+                            <span onClick={passwordToggle} className='icon2'>
+                            <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
+                            </span>
+                          }
                         <label className="label">
                           <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>

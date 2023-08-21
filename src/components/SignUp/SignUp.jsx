@@ -2,12 +2,15 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
 
     const {signUp} = useContext(AuthContext);
     const [error, setError] = useState();
     const [success, setSuccess] = useState();
+    const [passShow, setPassShow] = useState(false);
     const navigate = useNavigate();
 
     const handleSignUp = event=>{
@@ -51,6 +54,10 @@ const SignUp = () => {
             }
             
         })
+    };
+
+    const passwordToggle = ()=>{
+        setPassShow(!passShow);
     }
 
 
@@ -73,13 +80,21 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input type={passShow ? "text" : "password"} name="password" placeholder="password" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
+                        <div className="form-control password-icon">
                             <label className="label">
                                 <span className="label-text">Confirm Password</span>
                             </label>
-                            <input type="password" name="confirmPassword" placeholder="password" className="input input-bordered" required />
+                            <input type={passShow ? "text" : "password"} name="confirmPassword" placeholder="password" className="input input-bordered" required />
+                            {
+                                !passShow ? <span onClick={passwordToggle} className="icon">
+                                    <FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon>
+                                </span>:
+                                <span onClick={passwordToggle} className="icon">
+                                    <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
+                                </span>
+                            }
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>

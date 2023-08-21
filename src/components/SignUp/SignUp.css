@@ -4,3 +4,19 @@ input{
 .input:focus{
     outline-offset: 0px;
 }
+.password-icon{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.password-icon2{
+    position: relative;
+}
+.icon2{
+    position: absolute;
+    right: 10px;
+    bottom: 35px;
+}
