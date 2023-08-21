@@ -12,6 +12,7 @@ const Header = () => {
                 <NavLink to="/orders" className="btn btn-ghost normal-case text-xl text-white">Orders</NavLink>
                 <NavLink to="/inventory" className="btn btn-ghost normal-case text-xl text-white">Inventory</NavLink>
                 <NavLink to="/login" className="btn btn-ghost normal-case text-xl text-white">Login</NavLink>
+                <NavLink to="/signup" className="btn btn-ghost normal-case text-xl text-white">Sign Up</NavLink>
             </div>
         </div>
     );
