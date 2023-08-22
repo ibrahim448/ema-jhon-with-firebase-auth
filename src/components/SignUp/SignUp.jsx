@@ -64,10 +64,11 @@ const SignUp = () => {
     };
 
     //gool=gle with login
-    const googleLogin = ()=>{
+    const googleSignUp = ()=>{
         googleWithLogin()
         .then(result=>{
-
+            setSuccess("Google Sign Up Success");
+            navigate("/login")
         })
         .catch(error=>{
             console.log(error.message);
@@ -121,15 +122,15 @@ const SignUp = () => {
                     </form>
                     <div className="form-control">
                         <div className="divider">OR</div>
-                        <button onClick={googleLogin} className="btn btn-outline btn-primary">Continue with Google</button>
+                        <button onClick={googleSignUp} className="btn btn-outline btn-primary">Continue with Google</button>
                     </div>
                     <div className="form-control">
-                            <label className="label justify-center">
-                                <span className="label-text">{error}</span>
-                                <span className="label-text">{success}</span>
-                                {/* {user.email} */}
-                            </label>
-                        </div>
+                        <label className="label justify-center">
+                            <span className="label-text">{error}</span>
+                            <span className="label-text">{success}</span>
+                            {/* {user.email} */}
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

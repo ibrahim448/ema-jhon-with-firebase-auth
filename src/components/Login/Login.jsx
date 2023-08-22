@@ -7,7 +7,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
 
-  const {login,passwordReset} = useContext(AuthContext);
+  const {login,passwordReset,googleWithLogin} = useContext(AuthContext);
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
   const [passShow, setPassShow] = useState(false);
@@ -61,6 +61,18 @@ const Login = () => {
         console.log(error.message);
         setError(error.message)
     })
+  };
+
+  //google with login
+  const loginGoogle = ()=>{
+    googleWithLogin()
+    .then(()=>{
+      setSuccess("Login success");
+      navigate(from, {replace:true});
+    })
+    .catch(error=>{
+      console.log(error.message);
+    })
   }
   
   return (
@@ -73,7 +85,7 @@ const Login = () => {
             </div>
 
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <form onSubmit={handleLogin} className="card-body">
+                <form onSubmit={handleLogin} className="card-body pb-0">
 
                   <div className="form-control">
                     <label className="label">
@@ -104,18 +116,29 @@ const Login = () => {
                     <button className="btn btn-primary">Login</button>
                     <NavLink to="/signup" className="label-text-alt link link-hover text-center">New to Ema-Jhon?<span className="text-warning font-bold">Create New Account</span>
                     </NavLink>
-                    <div className="divider">OR</div>
-                    <button className="btn btn-outline btn-primary">Continue with Google</button>    
+                    {/* <div className="divider">OR</div>
+                    <button className="btn btn-outline btn-primary">Continue with Google</button>     */}
                   </div>
 
-                  <div className="form-control">
+                  {/* <div className="form-control">
                     <label className="label justify-center">
                       <span className="label-text">{error}</span>
                       <span className="label-text">{success}</span>
                     </label>
                   </div>
-                   
+                    */}
                 </form>
+                <div className="form-control">
+                        <div className="divider">OR</div>
+                        <button onClick={loginGoogle}  className="btn btn-outline btn-primary">Continue with Google</button>
+                    </div>
+                    <div className="form-control">
+                        <label className="label justify-center">
+                            <span className="label-text">{error}</span>
+                            <span className="label-text">{success}</span>
+                            {/* {user.email} */}
+                        </label>
+                    </div>
             </div>
         </div>
     </div>
