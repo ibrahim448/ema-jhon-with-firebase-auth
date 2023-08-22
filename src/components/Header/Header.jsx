@@ -26,15 +26,14 @@ const Header = () => {
                 <NavLink to="/" className= {({ isActive}) => isActive ? "active btn btn-ghost normal-case text-xl text-white" : "undefined btn btn-ghost normal-case text-xl text-white" }>Shope</NavLink>
                 <NavLink to="/orders" className="btn btn-ghost normal-case text-xl text-white">Orders</NavLink>
                 <NavLink to="/inventory" className="btn btn-ghost normal-case text-xl text-white">Inventory</NavLink>
-                <NavLink to="/login" className="btn btn-ghost normal-case text-xl text-white">Login</NavLink>
                 <NavLink to="/signup" className="btn btn-ghost normal-case text-xl text-white">Sign Up</NavLink>
                 
                     {
                         user ? <div>
-                            <span>{user.email}</span>
-                            <span onClick={handleLogOut} className="btn btn-ghost normal-case text-xl text-white">Logout</span>
+                            {/* <span>{user.email}</span> */}
+                            <NavLink to="/" onClick={handleLogOut} className="btn btn-ghost normal-case text-xl text-white">Logout</NavLink>
                         </div>:
-                        <span>Login</span>
+                        <NavLink to="/login" className="btn btn-ghost normal-case text-xl text-white">Login</NavLink>
                     }
                 
             </div>
