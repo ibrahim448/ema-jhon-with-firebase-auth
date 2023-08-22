@@ -7,7 +7,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
 
-    const {signUp,user} = useContext(AuthContext);
+    const {signUp,user,googleWithLogin} = useContext(AuthContext);
     console.log(user)
     const [error, setError] = useState();
     const [success, setSuccess] = useState();
@@ -61,6 +61,17 @@ const SignUp = () => {
 
     const passwordToggle = ()=>{
         setPassShow(!passShow);
+    };
+
+    //gool=gle with login
+    const googleLogin = ()=>{
+        googleWithLogin()
+        .then(result=>{
+
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
     }
 
 
@@ -72,7 +83,7 @@ const SignUp = () => {
                     <h1 className="text-5xl font-bold mb-2">Sign Up!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleSignUp} className="card-body">
+                    <form onSubmit={handleSignUp} className="card-body pb-0">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -103,17 +114,22 @@ const SignUp = () => {
                             <button className="btn btn-primary">Sign Up</button>
                             <NavLink to="/login" className="label-text-alt link link-hover text-center">Already have an  account?<span className="text-warning font-bold">Login</span>
                             </NavLink>
-                            <div className="divider">OR</div>
-                            <button className="btn btn-outline btn-primary">Continue with Google</button>
+                            {/* <div className="divider">OR</div>
+                            <button className="btn btn-outline btn-primary">Continue with Google</button> */}
                         </div>
-                        <div className="form-control">
-                            <label className="label">
+                        
+                    </form>
+                    <div className="form-control">
+                        <div className="divider">OR</div>
+                        <button onClick={googleLogin} className="btn btn-outline btn-primary">Continue with Google</button>
+                    </div>
+                    <div className="form-control">
+                            <label className="label justify-center">
                                 <span className="label-text">{error}</span>
                                 <span className="label-text">{success}</span>
                                 {/* {user.email} */}
                             </label>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
