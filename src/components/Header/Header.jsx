@@ -6,8 +6,18 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext);
-    console.log(user, "login user")
+    const {user,logOut} = useContext(AuthContext);
+
+    const handleLogOut = ()=>{
+        logOut()
+        .then(result=>{
+
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+    }
+ 
 
     return (
         <div className="navbar bg-primary text-primary-content d-flex justify-between">
@@ -22,7 +32,7 @@ const Header = () => {
                     {
                         user ? <div>
                             <span>{user.email}</span>
-                            <span className="btn btn-ghost normal-case text-xl text-white">Logout</span>
+                            <span onClick={handleLogOut} className="btn btn-ghost normal-case text-xl text-white">Logout</span>
                         </div>:
                         <span>Login</span>
                     }
