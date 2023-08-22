@@ -16,6 +16,7 @@ import Checkout from './components/Checkout/Checkout';
 import SignUp from './components/SignUp/SignUp';
 import AuthProvider from './components/Provider/AuthProvider';
 
+
 const router = createBrowserRouter([
   {
     path: '/',

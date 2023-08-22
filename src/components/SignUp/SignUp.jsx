@@ -7,7 +7,8 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
 
-    const {signUp} = useContext(AuthContext);
+    const {signUp,user} = useContext(AuthContext);
+    console.log(user)
     const [error, setError] = useState();
     const [success, setSuccess] = useState();
     const [passShow, setPassShow] = useState(false);
@@ -16,6 +17,7 @@ const SignUp = () => {
     const handleSignUp = event=>{
         event.preventDefault();
         setError("");
+        setSuccess("");
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -44,6 +46,7 @@ const SignUp = () => {
         .then(result=>{
             const signdUp = result.user;
             console.log(signdUp);
+            setSuccess("SignUp")
             form.reset();
             navigate("/login")
         })
@@ -106,6 +109,8 @@ const SignUp = () => {
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">{error}</span>
+                                <span className="label-text">{success}</span>
+                                {/* {user.email} */}
                             </label>
                         </div>
                     </form>
