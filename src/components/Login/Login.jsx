@@ -1,17 +1,19 @@
 import { faEye, faEyeSlash, faL } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
+
 const Login = () => {
 
-  const {login} = useContext(AuthContext);
+  const {login,passwordReset} = useContext(AuthContext);
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
   const [passShow, setPassShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const emailRef = useRef();
 
   const from = location.state?.from?.pathname || "/";
   
@@ -37,11 +39,28 @@ const Login = () => {
       console.log(error.message);
       setError("Invalid Email or Password")
     })
-  }
+  };
 
-
+  //Password show
   const passwordToggle =()=>{
     setPassShow(!passShow);
+  };
+
+  //Reset Password
+  const handleResetPassword = ()=>{
+    const email = emailRef.current.value;
+    if(!email){
+        alert("please provide your email")
+    }
+
+    passwordReset(email)
+    .then(()=>{
+        alert("Please check your Email")
+    })
+    .catch(error =>{
+        console.log(error.message);
+        setError(error.message)
+    })
   }
   
   return (
@@ -60,7 +79,7 @@ const Login = () => {
                     <label className="label">
                       <span className="label-text">Email</span>
                     </label>
-                    <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                    <input type="email" name='email' ref={emailRef} placeholder="email" className="input input-bordered" required />
                   </div>
 
                   <div className="form-control password-icon2">
@@ -77,7 +96,7 @@ const Login = () => {
                       </span>
                     }
                     <label className="label">
-                      <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                      <p onClick={handleResetPassword} className="label-text-alt link link-hover">Forgot password?</p>
                     </label>
                   </div>
 
