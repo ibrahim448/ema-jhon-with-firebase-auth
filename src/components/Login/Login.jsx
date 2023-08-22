@@ -1,7 +1,7 @@
 import { faEye, faEyeSlash, faL } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
@@ -10,6 +10,10 @@ const Login = () => {
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
   const [passShow, setPassShow] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   
 
   const handleLogin = event=>{
@@ -27,6 +31,7 @@ const Login = () => {
       const logged = result.user;
       console.log(logged);
       setSuccess("Login Success");
+      navigate(from, {replace:true});
     })
     .catch(error=>{
       console.log(error.message);
